@@ -1,0 +1,14 @@
+target/
+.git/
+.idea/
+.vscode/
+.venv/
+*.log
+ProjetoF-codigo-fonte.zip
+ProjetoF-postman-collection.zip
+.env
+.github/
+docs/
+scripts/
+esg-api-tests/
+docker-compose.tests.yml

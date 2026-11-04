@@ -1,0 +1,25 @@
+# Adiciona o executor dos testes BDD/API a stack (API + Oracle).
+# Uso (ou simplesmente ./scripts/run-api-tests.sh):
+#   docker compose -f docker-compose.yml -f docker-compose.override.yml -f docker-compose.tests.yml \
+#     up --build --abort-on-container-exit --exit-code-from api-tests
+
+services:
+  api-tests:
+    build:
+      context: ./esg-api-tests
+      dockerfile: Dockerfile
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      API_BASE_URL: http://app:8080
+      API_WAIT_TIMEOUT: 300
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin@123}
+      AUDITOR_PASSWORD: ${AUDITOR_PASSWORD:-Auditor@123}
+      ANALYST_PASSWORD: ${ANALYST_PASSWORD:-Analyst@123}
+    volumes:
+      # Relatorios (HTML, JSON e JUnit XML) ficam disponiveis no host
+      - ./esg-api-tests/target:/tests/target
+    networks:
+      - esg-net
+    restart: "no"
