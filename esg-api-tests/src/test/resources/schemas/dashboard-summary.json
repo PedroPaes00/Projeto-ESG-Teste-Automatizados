@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Resumo do dashboard ESG",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "totalLicenses",
+    "activeLicenses",
+    "expiringIn30Days",
+    "openAlerts",
+    "scheduledAudits"
+  ],
+  "properties": {
+    "totalLicenses": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "activeLicenses": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expiringIn30Days": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "openAlerts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scheduledAudits": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

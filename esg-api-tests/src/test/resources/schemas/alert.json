@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Alerta de compliance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "licenseId",
+    "licenseCode",
+    "severity",
+    "message",
+    "resolved",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "licenseId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "licenseCode": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "resolved": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2}(\\.[0-9]+)?)?$"
+    }
+  }
+}

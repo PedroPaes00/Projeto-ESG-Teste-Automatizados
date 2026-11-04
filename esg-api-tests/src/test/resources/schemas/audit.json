@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Auditoria interna",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "licenseId",
+    "licenseCode",
+    "auditorName",
+    "scheduledAt",
+    "status",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "licenseId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "licenseCode": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "auditorName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "scheduledAt": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2}(\\.[0-9]+)?)?$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "SCHEDULED",
+        "IN_PROGRESS",
+        "COMPLETED",
+        "CANCELLED"
+      ]
+    },
+    "findings": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "createdAt": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2}(\\.[0-9]+)?)?$"
+    }
+  }
+}
